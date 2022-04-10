@@ -174,6 +174,21 @@ def moverIzquierda(self):
         self.mapa[self.muneco_fila][self.muneco_columna - 1] = 4
         self.muneco_columna -= 1
 
+#20 - Personaje_meta, caja, espacio -> [5,0,5] -> [0,2,4]
+    elif self.mapa[self.muneco_fila][self.muneco_columna] == 5 and self.mapa[self.muneco_fila][self.muneco_columna - 1] == 0 and self.mapa[self.muneco_fila][self.muneco_columna - 2] == 5:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 0
+        self.mapa[self.muneco_fila][self.muneco_columna - 1] = 2
+        self.mapa[self.muneco_fila][self.muneco_columna - 2] = 4
+        self.muneco_columna -= 1
+
+#21 - Personaje_meta, caja, meta -> [4,0,5] -> [6,2,4]
+    elif self.mapa[self.muneco_fila][self.muneco_columna] == 4 and self.mapa[self.muneco_fila][self.muneco_columna - 1] == 0 and self.mapa[self.muneco_fila][self.muneco_columna - 2] == 5:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 6
+        self.mapa[self.muneco_fila][self.muneco_columna - 1] = 2
+        self.mapa[self.muneco_fila][self.muneco_columna - 2] = 4
+        self.muneco_columna -= 1
+
+
 
 def jugar(self):
     while True:
