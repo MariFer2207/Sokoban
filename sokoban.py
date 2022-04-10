@@ -1,55 +1,136 @@
-print("Hola")
+"""
+Autora:Maria Fernanda Avelar Alvarez
+Fecha: 12/04/2022
+Descripcion: Sokoban-Juego
+    0 - Cajas
+    1 - Paredes
+    2 - Muñeco
+    3 - Camino
+    4 - Metas
+    5 - Muñeco_meta
+    6 - Caja_meta
+"""
 class sokoban:
-  """
-  0 - Cajas
-  1 - Paredes
-  2 - Muñeco
-  3 - Camino
-  4 - Metas
-  5 - Muñeco_meta
-  6 - Caja_meta
-  """
-  posicion_columna = 4
-  mapa = [1,3,3,3,2,3,3,3,1]
-
-  def __init__(self):
-    pass
-
-  def imprimirMapa(self):
-    for i in self.mapa:
-      if i == 3:
-        print(" ", end = "")
-      elif i == 2:
-        print(chr(64), end ="")
-      elif i == 1:
-        print("|", end ="")
-      else:
-        print(i, end ="")
-    print()
-
-  def moverDerecha(self):
-    self.posicion_columna += 1
-    self.mapa[self.posicion_columna] = 2
-    self.mapa[self.posicion_columna - 1] = 3
-    self.imprimirMapa()
-  def moverIzquierda(self):
-    self.posicion_columna -= 1
-    self.mapa[self.posicion_columna] = 2
-    self.mapa[self.posicion_columna + 1] = 3
-
-juego = sokoban()
-juego.imprimirMapa()
-
-instrucciones = "q-Salir\nd-Derecha\na-Izquierda"
-
-while True:
-  print(instrucciones)
-  movimiento = input("Mover: ")
-  if movimiento == "d":
-    juego.moverDerecha()
-  elif movimiento == "a":
-    juego.moverIzquierda()
-  elif movimiento == "q":
-    print("Saliste deljuego")
-    break
     
+ print("Hola")
+
+    
+mapa = [
+    [1,3,3,3,3,3,3,3,3,3,3,3,3,3,1],
+    [1,3,3,3,3,1,3,3,3,3,3,3,3,3,1],
+    [1,3,3,3,3,3,3,0,3,3,3,1,1,3,1],
+    [1,0,3,3,3,2,3,3,0,4,3,1,3,3,1],
+    [1,3,3,3,3,3,0,1,1,3,3,3,3,1,1],
+    [1,3,3,3,3,3,3,3,0,3,3,1,3,3,1],
+    [1,1,3,3,3,3,0,3,3,3,3,1,1,1,1],
+    [1,1,3,3,3,3,3,3,0,3,3,3,1,3,1],
+    [1,3,3,3,0,3,3,3,3,1,1,1,3,3,1],
+    ]
+
+#Posición inicial del muñeco en el mapa
+muñeco_fila = 3
+muñeco_columna = 5
+
+def imprimirMapa(self):
+    for fila in self.mapa:
+        print(fila)
+
+def moverDerecha(self):
+        
+#00 - Personaje, camino -> [2,3] -> [3,2]
+    if self.mapa[self.muneco_fila][self.muneco_columna] == 2 and self.mapa[self.muneco_fila][self.muneco_columna + 1] == 3:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 3
+        self.mapa[self.muneco_fila][self.muneco_columna + 1] = 2
+        self.muneco_columna += 1
+
+#01 - Personaje, meta -> [2,4] -> [3,5]
+    if self.mapa[self.muneco_fila][self.muneco_columna] == 2 and self.mapa[self.muneco_fila][self.muneco_columna + 1] == 4:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 3
+        self.mapa[self.muneco_fila][self.muneco_columna + 1] = 5
+        self.muneco_columna += 1
+
+#02 - Personaje, caja, camino -> [2,0,3] -> [3,2,0]
+    elif self.mapa[self.muneco_fila][self.muneco_columna] == 2 and self.mapa[self.muneco_fila][self.muneco_columna +1] == 0 and self.mapa[self.muneco_fila][self.muneco_columna +2] == 3:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 3
+        self.mapa[self.muneco_fila][self.muneco_columna +1] = 2
+        self.mapa[self.muneco_fila][self.muneco_columna +2] = 0
+        self.muneco_columna += 1
+
+#03 - Personaje, caja, meta -> [2,0,4] -> [3,2,6]
+    elif self.mapa[self.muneco_fila][self.muneco_columna] == 2 and self.mapa[self.muneco_fila][self.muneco_columna +1] == 0 and self.mapa[self.muneco_fila][self.muneco_columna +2] == 4:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 3
+        self.mapa[self.muneco_fila][self.muneco_columna +1] = 2
+        self.mapa[self.muneco_fila][self.muneco_columna +2] = 6
+        self.muneco_columna += 1
+        
+#04 - Personaje, caja_meta, espacio -> [2,6,3] -> [3,5,0]
+    elif self.mapa[self.muneco_fila][self.muneco_columna] == 2 and self.mapa[self.muneco_fila][self.muneco_columna +1] == 6 and self.mapa[self.muneco_fila][self.muneco_columna +2] == 3:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 3
+        self.mapa[self.muneco_fila][self.muneco_columna +1] = 5
+        self.mapa[self.muneco_fila][self.muneco_columna +2] = 6
+        self.muneco_columna += 1
+
+#05 - Personaje, caja_meta, meta -> [2,6,4] -> [3,5,0]
+    elif self.mapa[self.muneco_fila][self.muneco_columna] == 2 and self.mapa[self.muneco_fila][self.muneco_columna +1] == 6 and self.mapa[self.muneco_fila][self.muneco_columna +2] == 4:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 3
+        self.mapa[self.muneco_fila][self.muneco_columna +1] = 5
+        self.mapa[self.muneco_fila][self.muneco_columna +2] = 0
+        self.muneco_columna += 1
+
+#06 - Personaje_meta, espacio -> [5,3] -> [4,2]
+    if self.mapa[self.muneco_fila][self.muneco_columna] == 5 and self.mapa[self.muneco_fila][self.muneco_columna + 1] == 3:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 4
+        self.mapa[self.muneco_fila][self.muneco_columna + 1] = 2
+        self.muneco_columna += 1
+
+#07 - Personaje_meta, meta -> [5,4] -> [4,5]
+    if self.mapa[self.muneco_fila][self.muneco_columna] == 5 and self.mapa[self.muneco_fila][self.muneco_columna + 1] == 4:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 4
+        self.mapa[self.muneco_fila][self.muneco_columna + 1] = 5
+        self.muneco_columna += 1
+
+#08 - Personaje_meta, caja, espacio -> [5,0,3] -> [4,2,0]
+    elif self.mapa[self.muneco_fila][self.muneco_columna] == 5 and self.mapa[self.muneco_fila][self.muneco_columna +1] == 0 and self.mapa[self.muneco_fila][self.muneco_columna +2] == 3:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 4
+        self.mapa[self.muneco_fila][self.muneco_columna +1] = 2
+        self.mapa[self.muneco_fila][self.muneco_columna +2] = 0
+        self.muneco_columna += 1
+            
+#09 - Personaje_meta, caja, meta -> [5,0,4] -> [4,2,6]
+    elif self.mapa[self.muneco_fila][self.muneco_columna] == 2 and self.mapa[self.muneco_fila][self.muneco_columna +1] == 6 and self.mapa[self.muneco_fila][self.muneco_columna +2] == 4:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 3
+        self.mapa[self.muneco_fila][self.muneco_columna +1] = 5
+        self.mapa[self.muneco_fila][self.muneco_columna +2] = 0
+        self.muneco_columna += 1
+
+#10 - Personaje_meta, caja_meta, epacio -> [5,6,3] -> [4,5,0]
+    elif self.mapa[self.muneco_fila][self.muneco_columna] == 5 and self.mapa[self.muneco_fila][self.muneco_columna +1] == 6 and self.mapa[self.muneco_fila][self.muneco_columna +2] == 3:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 4
+        self.mapa[self.muneco_fila][self.muneco_columna +1] = 5
+        self.mapa[self.muneco_fila][self.muneco_columna +2] = 0
+        self.muneco_columna += 1
+
+        
+
+def jugar(self):
+    while True:
+        self.imprimirMapa()
+        instrucciones = "d-Derecha, b-Abajo, a-Izquierda, q-Arriba, s-Salir"
+        print(instrucciones)
+        movimiento = input("Mover a: ")
+        if movimiento == "d":
+            self.moverDerecha()
+        elif movimiento == "b":
+            self.moverAbajo()
+        elif movimiento == "a":
+            self.moverIzquierda()
+        elif movimiento == "q":
+            self.moverArriba()
+        elif movimiento == "s":
+            break
+juego = sokoban()
+juego.jugar()
+                
+
+
+
