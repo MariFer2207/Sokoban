@@ -128,12 +128,25 @@ def moverIzquierda(self):
         self.mapa[self.muneco_fila][self.muneco_columna - 1] = 3
         self.muneco_columna -= 1
 #13 - Personaje, meta -> [4,2] -> [5,3]
-    if self.mapa[self.muneco_fila][self.muneco_columna] == 4 and self.mapa[self.muneco_fila][self.muneco_columna + 1] == 2:
+    if self.mapa[self.muneco_fila][self.muneco_columna] == 4 and self.mapa[self.muneco_fila][self.muneco_columna - 1] == 2:
         self.mapa[self.muneco_fila][self.muneco_columna] = 5
-        self.mapa[self.muneco_fila][self.muneco_columna + 1] = 3
-        self.muneco_columna += 1
-        
+        self.mapa[self.muneco_fila][self.muneco_columna - 1] = 3
+        self.muneco_columna -= 1
 
+#14 - Personaje, caja, espacio -> [3,0,2] -> [0,3,3]
+    elif self.mapa[self.muneco_fila][self.muneco_columna] == 3 and self.mapa[self.muneco_fila][self.muneco_columna - 1] == 0 and self.mapa[self.muneco_fila][self.muneco_columna - 2] == 2:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 0
+        self.mapa[self.muneco_fila][self.muneco_columna - 1] = 3
+        self.mapa[self.muneco_fila][self.muneco_columna - 2] = 3
+        self.muneco_columna -= 1
+
+#15 - Personaje, caja, meta -> [4,0,2] -> [6,3,3]
+    elif self.mapa[self.muneco_fila][self.muneco_columna] == 4 and self.mapa[self.muneco_fila][self.muneco_columna - 1] == 0 and self.mapa[self.muneco_fila][self.muneco_columna - 2] == 2:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 6
+        self.mapa[self.muneco_fila][self.muneco_columna - 1] = 3
+        self.mapa[self.muneco_fila][self.muneco_columna - 2] = 3
+        self.muneco_columna -= 1
+        
 def jugar(self):
     while True:
         self.imprimirMapa()
