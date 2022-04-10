@@ -110,6 +110,13 @@ def moverDerecha(self):
         self.mapa[self.muneco_fila][self.muneco_columna +2] = 0
         self.muneco_columna += 1
 
+#11 - Personaje_meta, caja_meta, meta -> [5,6,4] -> [4,5,6]
+    elif self.mapa[self.muneco_fila][self.muneco_columna] == 5 and self.mapa[self.muneco_fila][self.muneco_columna +1] == 6 and self.mapa[self.muneco_fila][self.muneco_columna +2] == 4:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 4
+        self.mapa[self.muneco_fila][self.muneco_columna +1] = 5
+        self.mapa[self.muneco_fila][self.muneco_columna +2] = 6
+        self.muneco_columna += 1
+
         
 
 def jugar(self):
