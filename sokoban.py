@@ -12,20 +12,18 @@ Descripcion: Sokoban-Juego
 """
 class sokoban:
     
- print("Hola")
-
-    
-mapa = [
-    [1,3,3,3,3,3,3,3,3,3,3,3,3,3,1],
-    [1,3,3,3,3,1,3,3,3,3,3,3,3,3,1],
-    [1,3,3,3,3,3,3,0,3,3,3,1,1,3,1],
-    [1,0,3,3,3,2,3,3,0,4,3,1,3,3,1],
-    [1,3,3,3,3,3,0,1,1,3,3,3,3,1,1],
-    [1,3,3,3,3,3,3,3,0,3,3,1,3,3,1],
-    [1,1,3,3,3,3,0,3,3,3,3,1,1,1,1],
-    [1,1,3,3,3,3,3,3,0,3,3,3,1,3,1],
-    [1,3,3,3,0,3,3,3,3,1,1,1,3,3,1],
-    ]
+    mapa = [
+            [1,3,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,1,4,1],
+            [1,3,3,3,3,1,3,4,3,3,3,3,3,3,1,3,3,3,3,3,1],
+            [1,3,3,3,3,3,3,0,3,3,3,1,1,3,1,3,3,3,3,4,1],
+            [1,0,3,3,3,2,3,3,0,4,3,1,3,3,1,3,3,3,3,4,1],
+            [1,3,3,3,3,3,0,1,1,3,3,3,3,1,1,3,3,3,3,3,1],
+            [1,3,3,3,3,3,3,3,0,3,3,1,3,3,1,1,1,3,3,3,1],
+            [1,1,3,3,3,3,0,3,3,3,3,1,1,1,1,3,3,3,3,1,1],
+            [1,1,3,3,3,3,3,3,0,3,3,3,1,3,1,3,3,3,3,3,1],
+            [1,3,3,3,0,3,3,3,3,1,1,1,3,3,1,3,3,3,3,4,1],
+            [1,3,3,3,3,3,3,0,3,3,3,1,1,1,3,3,3,1,3,1,1]
+            ]
 
 #Posición inicial del muñeco en el mapa
 muñeco_fila = 3
@@ -34,7 +32,7 @@ muñeco_columna = 5
 def imprimirMapa(self):
     for fila in self.mapa:
         print(fila)
-"""Imprime el mapa completo"""
+    """Imprime el mapa completo"""
 
 def moverDerecha(self):
      """Controla los movimientos a la derecha"""
@@ -120,7 +118,7 @@ def moverDerecha(self):
         self.muneco_columna += 1
 
 def moverIzquierda(self):
-"""Controla los movimiento a la izquierda"""
+        """Controla los movimiento a la izquierda"""
 
 #12 - Personaje, espacio -> [3,2] -> [2,3]
     if self.mapa[self.muneco_fila][self.muneco_columna] == 3 and self.mapa[self.muneco_fila][self.muneco_columna - 1] == 2:
@@ -203,21 +201,35 @@ def moverIzquierda(self):
         self.muneco_columna -= 1
 
 def moverAbajo (self):
-    """Controla el movimiento del muñeco hacia abajo"""
-#24 Espacio, Personaje [3, 2] ap [2, 3]
+        """Controla el movimiento del muñeco hacia abajo"""
+#24 Espacio, Personaje [3, 2] ab [2, 3]
     if self.mapa[self.muneco_fila][self.muneco_columna] == 3 and self.mapa[self.muneco_fila + 1][self.muneco_columna] == 2:
         self.mapa[self.muneco_fila][self.muneco_columna] = 2
-        self.mapa[self.muneco_fila + 1][self.muneco_columna + 1] = 3
-        self.muneco_columna += 1
+        self.mapa[self.muneco_fila + 1][self.muneco_columna] = 3
+        self.muneco_fila += 1
 
 #25 Meta, Personaje [4, 2] ap [5, 3]
     if self.mapa[self.muneco_fila][self.muneco_columna] == 4 and self.mapa[self.muneco_fila + 1][self.muneco_columna] == 2:
         self.mapa[self.muneco_fila][self.muneco_columna] = 5
-        self.mapa[self.muneco_fila + 1][self.muneco_columna + 1] = 3
-        self.muneco_columna += 1
+        self.mapa[self.muneco_fila + 1][self.muneco_columna] = 3
+        self.muneco_fila += 1
+
+#26 - Espacio, caja, personaje -> [3,0,2] ab [0,2,3]
+    elif self.mapa[self.muneco_fila][self.muneco_columna] == 5 and self.mapa[self.muneco_fila + 1][self.muneco_columna] == 6 and self.mapa[self.muneco_fila + 2][self.muneco_columna] == 3:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 4
+        self.mapa[self.muneco_fila + 1][self.muneco_columna] = 5
+        self.mapa[self.muneco_fila + 2 ][self.muneco_columna] = 0
+        self.muneco_fila += 1
+
+#27 - Meta, caja, personaje -> [4,0,2] ab [6,2,3]
+    elif self.mapa[self.muneco_fila][self.muneco_columna] == 4 and self.mapa[self.muneco_fila + 1][self.muneco_columna] == 0 and self.mapa[self.muneco_fila + 2][self.muneco_columna] == 2:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 6
+        self.mapa[self.muneco_fila + 1][self.muneco_columna] = 2
+        self.mapa[self.muneco_fila + 2 ][self.muneco_columna] = 3
+        self.muneco_fila += 1
 
 
-        
+
 
 def jugar(self):
     while True:
@@ -235,8 +247,8 @@ def jugar(self):
             self.moverArriba()
         elif movimiento == "s":
             break
-juego = sokoban()
-juego.jugar()
+    juego = sokoban()
+    juego.jugar()
                 
 
 
