@@ -201,6 +201,22 @@ def moverIzquierda(self):
         self.mapa[self.muneco_fila][self.muneco_columna - 1] = 5
         self.mapa[self.muneco_fila][self.muneco_columna - 2] = 4
         self.muneco_columna -= 1
+
+def moverAbajo (self):
+    """Controla el movimiento del muñeco hacia abajo"""
+#24 Espacio, Personaje [3, 2] ap [2, 3]
+    if self.mapa[self.muneco_fila][self.muneco_columna] == 3 and self.mapa[self.muneco_fila + 1][self.muneco_columna] == 2:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 2
+        self.mapa[self.muneco_fila + 1][self.muneco_columna + 1] = 3
+        self.muneco_columna += 1
+
+#25 Meta, Personaje [4, 2] ap [5, 3]
+    if self.mapa[self.muneco_fila][self.muneco_columna] == 4 and self.mapa[self.muneco_fila + 1][self.muneco_columna] == 2:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 5
+        self.mapa[self.muneco_fila + 1][self.muneco_columna + 1] = 3
+        self.muneco_columna += 1
+
+
         
 
 def jugar(self):
