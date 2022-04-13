@@ -280,10 +280,24 @@ def moverArriba (self):
         self.mapa[self.muneco_fila - 2 ][self.muneco_columna] = 0
         self.muneco_fila -= 1
 
-#37 - Personaje, caja, meta -> [2,0,4] arr [3,2,6]
+#38 - Personaje, caja, meta -> [2,0,4] arr [3,2,6]
     elif self.mapa[self.muneco_fila][self.muneco_columna] == 2 and self.mapa[self.muneco_fila - 1][self.muneco_columna] == 0 and self.mapa[self.muneco_fila - 2][self.muneco_columna] == 4:
         self.mapa[self.muneco_fila][self.muneco_columna] = 3
         self.mapa[self.muneco_fila - 1][self.muneco_columna] = 2
+        self.mapa[self.muneco_fila - 2 ][self.muneco_columna] = 6
+        self.muneco_fila -= 1
+
+#39 - Personaje, caja_meta, espacio -> [2,6,3] arr [3,5,4]
+    elif self.mapa[self.muneco_fila][self.muneco_columna] == 2 and self.mapa[self.muneco_fila - 1][self.muneco_columna] == 6 and self.mapa[self.muneco_fila - 2][self.muneco_columna] == 3:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 3
+        self.mapa[self.muneco_fila - 1][self.muneco_columna] = 5
+        self.mapa[self.muneco_fila - 2 ][self.muneco_columna] = 4
+        self.muneco_fila -= 1
+
+#37 - Personaje, caja_meta, meta -> [2,6,4] arr [3,5,6]
+    elif self.mapa[self.muneco_fila][self.muneco_columna] == 2 and self.mapa[self.muneco_fila - 1][self.muneco_columna] == 6 and self.mapa[self.muneco_fila - 2][self.muneco_columna] == 4:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 3
+        self.mapa[self.muneco_fila - 1][self.muneco_columna] = 5
         self.mapa[self.muneco_fila - 2 ][self.muneco_columna] = 6
         self.muneco_fila -= 1
         
