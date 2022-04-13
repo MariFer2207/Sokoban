@@ -239,12 +239,29 @@ def moverAbajo (self):
         self.mapa[self.muneco_fila + 1][self.muneco_columna] = 4
         self.muneco_fila += 1
 
-#32 - Espacio, caja, personaje_meta -> [3,0,5] ab [0,2,4]
+#32 - Espacio, caja, personaje_meta -> [3,0,5] ab [6,3,4]
     elif self.mapa[self.muneco_fila][self.muneco_columna] == 3 and self.mapa[self.muneco_fila + 1][self.muneco_columna] == 0 and self.mapa[self.muneco_fila + 2][self.muneco_columna] == 5:
-        self.mapa[self.muneco_fila][self.muneco_columna] = 0
-        self.mapa[self.muneco_fila + 1][self.muneco_columna] = 2
+        self.mapa[self.muneco_fila][self.muneco_columna] = 6
+        self.mapa[self.muneco_fila + 1][self.muneco_columna] = 3
         self.mapa[self.muneco_fila + 2 ][self.muneco_columna] = 4
         self.muneco_fila += 1
+#33 - Meta, caja_meta, personaje_meta -> [3,6,5] ab [0,5,4]
+    elif self.mapa[self.muneco_fila][self.muneco_columna] == 3 and self.mapa[self.muneco_fila + 1][self.muneco_columna] == 6 and self.mapa[self.muneco_fila + 2][self.muneco_columna] == 5:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 0
+        self.mapa[self.muneco_fila + 1][self.muneco_columna] = 5
+        self.mapa[self.muneco_fila + 2 ][self.muneco_columna] = 4
+        self.muneco_fila += 1
+
+#32 - Meta, caja_meta, personaje_meta -> [4,6,5] ab [6,5,4]
+    elif self.mapa[self.muneco_fila][self.muneco_columna] == 4 and self.mapa[self.muneco_fila + 1][self.muneco_columna] == 6 and self.mapa[self.muneco_fila + 2][self.muneco_columna] == 5:
+        self.mapa[self.muneco_fila][self.muneco_columna] = 6
+        self.mapa[self.muneco_fila + 1][self.muneco_columna] = 5
+        self.mapa[self.muneco_fila + 2 ][self.muneco_columna] = 4
+        self.muneco_fila += 1
+
+
+
+
 
 def jugar(self):
     while True:
