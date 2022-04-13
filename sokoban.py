@@ -23,7 +23,7 @@ class sokoban:
     def moverDerecha(self):
      """Controla los movimientos a la derecha"""
 #00 - (Personaje, espacio) -> [2,3] -> [3,2]
-if self.mapa[self.muneco_fila][self.muneco_columna] == 2 and self.mapa[self.muneco_fila][self.muneco_columna + 1] == 3:
+    if self.mapa[self.muneco_fila][self.muneco_columna] == 2 and self.mapa[self.muneco_fila][self.muneco_columna + 1] == 3:
         self.mapa[self.muneco_fila][self.muneco_columna] = 3
         self.mapa[self.muneco_fila][self.muneco_columna + 1] = 2
         self.muneco_columna += 1
@@ -102,9 +102,8 @@ if self.mapa[self.muneco_fila][self.muneco_columna] == 2 and self.mapa[self.mune
         self.mapa[self.muneco_fila][self.muneco_columna +2] = 6
         self.muneco_columna += 1
 
-def moverIzquierda(self):
+    def moverIzquierda(self):
         """Controla los movimiento a la izquierda"""
-
 #12 - Personaje, espacio -> [3,2] -> [2,3]
     if self.mapa[self.muneco_fila][self.muneco_columna] == 3 and self.mapa[self.muneco_fila][self.muneco_columna - 1] == 2:
         self.mapa[self.muneco_fila][self.muneco_columna] = 2
@@ -185,7 +184,7 @@ def moverIzquierda(self):
         self.mapa[self.muneco_fila][self.muneco_columna - 2] = 4
         self.muneco_columna -= 1
 
-def moverAbajo (self):
+    def moverAbajo (self):
         """Controla el movimiento del muñeco hacia abajo"""
 #24 Espacio, Personaje [3, 2] ab [2, 3]
     if self.mapa[self.muneco_fila][self.muneco_columna] == 3 and self.mapa[self.muneco_fila + 1][self.muneco_columna] == 2:
@@ -259,7 +258,7 @@ def moverAbajo (self):
         self.mapa[self.muneco_fila + 2 ][self.muneco_columna] = 4
         self.muneco_fila += 1
 
-def moverArriba (self):
+    def moverArriba (self):
         """Controla el movimiento del muñeco hacia arriba"""
 #35 Personaje, espacio [2, 3] arr [3, 2]
     if self.mapa[self.muneco_fila][self.muneco_columna] == 2 and self.mapa[self.muneco_fila - 1][self.muneco_columna] == 3:
@@ -339,25 +338,25 @@ def moverArriba (self):
         self.mapa[self.muneco_fila][self.muneco_columna] = 4
         self.mapa[self.muneco_fila - 1][self.muneco_columna] = 5
         self.mapa[self.muneco_fila - 2 ][self.muneco_columna] = 6
-        self.muneco_fila -= 1   
+        self.muneco_fila -= 1
 
 
 
-def jugar(self):
-    while True:
-        self.imprimirMapa()
-        instrucciones = "d-Derecha, b-Abajo, a-Izquierda, q-Arriba, s-Salir"
-        print(instrucciones)
-        movimiento = input("Mover a: ")
-        if movimiento == "d":
-            self.moverDerecha()
-        elif movimiento == "b":
-            self.moverAbajo()
-        elif movimiento == "a":
-            self.moverIzquierda()
-        elif movimiento == "q":
-            self.moverArriba()
-        elif movimiento == "s":
-            break
-    juego = sokoban()
-    juego.jugar()
+    def jugar(self):
+        while True:
+            self.imprimirMapa()
+            instrucciones = "d-Derecha, b-Abajo, a-Izquierda, q-Arriba, s-Salir"
+            print(instrucciones)
+            movimiento = input("Mover a: ")
+            if movimiento == "d":
+                self.moverDerecha()
+            elif movimiento == "b":
+                self.moverAbajo()
+            elif movimiento == "a":
+                self.moverIzquierda()
+            elif movimiento == "q":
+                self.moverArriba()
+            elif movimiento == "s":
+                break
+        juego = sokoban()
+        juego.jugar()
